@@ -9,12 +9,30 @@ import {Gauge as CanvasGauge, Donut} from 'gaugeJS/dist/gauge.min';
  */
 function Gauge(props) {
   const canvas = useRef();
+  const span = useRef();
   const gauge = useRef();
 
   useEffect(() => {
     gauge.current = (
       props.donut ? new Donut(canvas.current) : new CanvasGauge(canvas.current)
     );
+    gauge.current.setTextField(span.current);
+
+    // Observe the span node
+    const config = {
+      characterData: true,
+      attributes: true,
+      childList: true,
+      subtree: true,
+    };
+    const observer = new MutationObserver((mutationsList, observer) => {
+      props.textChangeHandler(span.current.innerText);
+    });
+    observer.observe(span.current, config);
+
+    return () => {
+      observer.disconnect();
+    };
   }, [props.donut]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -38,7 +56,10 @@ function Gauge(props) {
   }, [props.value]);
 
   return (
-    <canvas ref={canvas}></canvas>
+    <>
+      <canvas ref={canvas}></canvas>
+      <span ref={span} style={{display: 'none'}}></span>
+    </>
   );
 }
 
@@ -64,6 +85,7 @@ Gauge.defaultProps = {
     highDpiSupport: true,
   },
   donut: false,
+  textChangeHandler: () => {},
 };
 
 Gauge.propTypes = {
@@ -73,6 +95,7 @@ Gauge.propTypes = {
   options: PropTypes.object.isRequired,
   donut: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
+  textChangeHandler: PropTypes.func.isRequired,
 };
 
 export default Gauge;

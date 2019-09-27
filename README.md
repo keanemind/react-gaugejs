@@ -1,7 +1,7 @@
 # react-gaugejs
 React wrapper for [Gauge.js](https://bernii.github.io/gauge.js/)
 
-There is support for getting the value of the gauge counter as it is incrementing (as seen in the demos on the Gauge.js website) through the handleResultTextChange callback prop. Note that this feature relies on [Mutation Observer](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), which may not be compatible with older browsers.
+There is support for getting the value of the gauge counter as it is incrementing (as seen in the demos on the Gauge.js website) through the handleResultTextChange callback prop. Note that this feature relies on [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), which may not be compatible with older browsers.
 
 ## Usage
 ```

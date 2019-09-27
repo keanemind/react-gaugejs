@@ -55,9 +55,22 @@ function Gauge(props) {
     gauge.current.set(props.value);
   }, [props.value]);
 
+  /* eslint-disable no-unused-vars */
+  const {
+    maxValue,
+    minValue,
+    animationSpeed,
+    options,
+    donut,
+    value,
+    textChangeHandler,
+    ...passThroughProps
+  } = props;
+  /* eslint-enable no-unused-vars */
+
   return (
     <>
-      <canvas ref={canvas}></canvas>
+      <canvas ref={canvas} {...passThroughProps}></canvas>
       <span ref={span} style={{display: 'none'}}></span>
     </>
   );

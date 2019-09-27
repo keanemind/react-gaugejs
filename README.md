@@ -10,7 +10,7 @@ npm install react-gaugejs
 
 ## Usage
 See the [gauge.js website](https://bernii.github.io/gauge.js/) for explanations of the props.
-```
+```javascript
 import Gauge from 'react-gaugejs';
 
 class MyComponent extends React.Component {

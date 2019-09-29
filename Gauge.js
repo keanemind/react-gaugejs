@@ -35,7 +35,12 @@ function Gauge(props) {
       props.donut ? new Donut(canvas.current) : new CanvasGauge(canvas.current)
     );
     gauge.current.setTextField(span.current);
-  }, [props.donut]);
+    gauge.current.setOptions(props.options);
+    gauge.current.maxValue = props.maxValue;
+    gauge.current.setMinValue(props.minValue);
+    gauge.current.animationSpeed = props.animationSpeed;
+    gauge.current.set(props.value);
+  }, [props.donut]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     gauge.current.setOptions(props.options);

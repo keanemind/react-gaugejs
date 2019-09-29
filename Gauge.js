@@ -13,11 +13,6 @@ function Gauge(props) {
   const gauge = useRef();
 
   useEffect(() => {
-    gauge.current = (
-      props.donut ? new Donut(canvas.current) : new CanvasGauge(canvas.current)
-    );
-    gauge.current.setTextField(span.current);
-
     // Observe the span node
     const config = {
       characterData: true,
@@ -33,7 +28,14 @@ function Gauge(props) {
     return () => {
       observer.disconnect();
     };
-  }, [props.donut]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    gauge.current = (
+      props.donut ? new Donut(canvas.current) : new CanvasGauge(canvas.current)
+    );
+    gauge.current.setTextField(span.current);
+  }, [props.donut]);
 
   useEffect(() => {
     gauge.current.setOptions(props.options);

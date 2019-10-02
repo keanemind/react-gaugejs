@@ -3,6 +3,8 @@ React wrapper for [gauge.js](https://bernii.github.io/gauge.js/)
 
 There is support for getting the value of the gauge counter as it is incrementing (as seen in the demos on the gauge.js website) through the handleResultTextChange callback prop. Note that this feature relies on [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver), which may not be compatible with older browsers.
 
+**Warning!** Some of the component's props will not affect the gauge as expected when modified after the component is already mounted. See [issue #3](https://github.com/keanemind/react-gaugejs/issues/3).
+
 ## Installation
 ```
 npm install react-gaugejs
@@ -16,6 +18,7 @@ import Gauge from 'react-gaugejs';
 class MyComponent extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {value: '0'};
     }
 
     handleResultTextChange(value) {
@@ -24,7 +27,7 @@ class MyComponent extends React.Component {
 
     render() {
         return (
-            <>
+            <React.Fragment>
                 <p>Value: {this.state.value}</p>
                 <Gauge
                     value={750}
@@ -55,7 +58,7 @@ class MyComponent extends React.Component {
                     className='gauge-canvas'
                     style={{height: '150px'}}
                 />
-            </>
+            </React.Fragment>
         );
     }
 }

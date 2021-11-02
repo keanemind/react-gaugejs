@@ -76,10 +76,10 @@ function Gauge(props) {
   /* eslint-enable no-unused-vars */
 
   return (
-    <>
+    <div>
       <canvas ref={canvas} {...passThroughProps}></canvas>
       <span ref={span} style={{display: 'none'}}></span>
-    </>
+    </div>
   );
 }
 

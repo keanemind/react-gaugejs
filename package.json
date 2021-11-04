@@ -1,6 +1,6 @@
 {
   "name": "react-gaugejs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React wrapper for Gauge.js",
   "main": "dist/Gauge.js",
   "module": "dist/Gauge.js",
@@ -33,7 +33,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0"
+    "react": ">= 16.9.0 < 18.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"

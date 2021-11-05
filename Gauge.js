@@ -21,14 +21,14 @@ function Gauge(props) {
       subtree: true,
     };
     const observer = new MutationObserver((mutationsList, observer) => {
-      props.textChangeHandler(span.current.innerText);
+      props.textChangeHandler.call(undefined, span.current.innerText);
     });
     observer.observe(span.current, config);
 
     return () => {
       observer.disconnect();
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [props.textChangeHandler]);
 
   useEffect(() => {
     gauge.current = (

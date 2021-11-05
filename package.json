@@ -1,6 +1,6 @@
 {
   "name": "react-gaugejs",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "React wrapper for Gauge.js",
   "main": "dist/Gauge.js",
   "module": "dist/Gauge.js",

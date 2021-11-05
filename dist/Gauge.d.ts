@@ -7,7 +7,7 @@ export interface GaugeProps {
     options: object,
     donut: boolean,
     value: number,
-    textChangeHandler: Function,
+    textChangeHandler: (newText: string) => void,
 }
 
 declare const Gauge: React.FunctionComponent<GaugeProps>
